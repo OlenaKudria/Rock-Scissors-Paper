@@ -1,3 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-Console.WriteLine("Hello, World!");
+﻿namespace Rock_Scissors_Paper
+{
+    public static class Program
+    {
+        public static void Main()
+        {
+           
+        }
+    }
+}
