@@ -1,19 +1,23 @@
 ﻿using System.Text;
+using Rock_Scissors_Paper.Enums;
+
 namespace Rock_Scissors_Paper
 {
     public static class Program
     {
-        private static readonly Random Random = new Random();
-        private static int _totalRounds = 0;
-        private static int _totalVictories = 0;
+        private static readonly Random Random = new();
+        private static int _totalRounds;
+        private static int _totalVictories;
         private static string? _name = string.Empty;
-        private static int _age = 0;
+        private static int _age;
         
         public static void Main()
         {
+            Console.ResetColor();
+            
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine(GameAssets.WelcomeText);
-            Console.ReadKey();
+            Thread.Sleep(2000);
             
             _name = GetName();
             _age = GetAge();
@@ -63,6 +67,7 @@ namespace Rock_Scissors_Paper
         
         private static void ShowStatistics()
         {
+            Thread.Sleep(1000);
             Console.WriteLine("\u2552\u2550\u2550\u2550\u2550\u2550\u2550\u2555");
             
             Console.WriteLine($"\u2570\u2508\u27a4 Ім'я: {_name}");
@@ -71,6 +76,7 @@ namespace Rock_Scissors_Paper
             Console.WriteLine($"\u2570\u2508\u27a4 Кількість перемог: {_totalVictories}");
 
             Console.WriteLine("\u2558\u2550\u2550\u2550\u2550\u2550\u2550\u255b");
+            Thread.Sleep(1000);
         }
 
         private static void ChangeGameState()
@@ -88,6 +94,7 @@ namespace Rock_Scissors_Paper
 
         private static int AskForStart()
         {
+            Thread.Sleep(2000);
             Console.WriteLine(new string('-', Console.WindowWidth));
             
             Console.WriteLine($"Готовий, герою, розпочати свій шлях і випробування, що чекають на тебе?" +
@@ -112,18 +119,22 @@ namespace Rock_Scissors_Paper
             if (result >= 2)
             {
                 _totalVictories++;
-                Console.WriteLine(GameAssets.WinText);
-                Console.WriteLine(GetRandomPraiseMessage());
-                ShowStatistics();
+                ProcessResult(ConsoleColor.DarkGreen, GameAssets.WinText, GetRandomPraiseMessage());
             }
             else
-            {
-                Console.WriteLine(GameAssets.FailText);
-                Console.WriteLine(GetRandomEncouragementMessage());
-                ShowStatistics();
-            }
-
+                ProcessResult(ConsoleColor.DarkRed, GameAssets.FailText, GetRandomEncouragementMessage());
+            
             ChangeGameState();
+        }
+
+        private static void ProcessResult(ConsoleColor color, string text, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ResetColor();
+            Console.WriteLine(message);
+            Thread.Sleep(2000);
+            ShowStatistics();
         }
 
         private static int Battle()
@@ -134,10 +145,10 @@ namespace Rock_Scissors_Paper
                 Weapons playerWeapon = ChooseWeapon();
                 Weapons enemyWeapon = GetEnemyRandomWeapon();
                 
+                ShowBattle(playerWeapon, enemyWeapon);
                 BattleState battleState = DetermineWinner(playerWeapon, enemyWeapon);
-                //todo show battle
                 Console.WriteLine(battleState);
-
+                
                 if (battleState == BattleState.PlayerWin)
                     victories++;
             }
@@ -156,6 +167,13 @@ namespace Rock_Scissors_Paper
             return userWins ? BattleState.PlayerWin : BattleState.EnemyWin;
         }
 
+        private static void ShowBattle(Weapons playerWeapon, Weapons enemyWeapon)
+        {
+            Thread.Sleep(2000);
+            Console.WriteLine($"{GameAssets.PlayerWeapons[playerWeapon]}  \nVS  {GameAssets.AiWeapons[enemyWeapon]}");
+            Thread.Sleep(2000);
+        }
+
         private static void EndGame()
         {
             Console.WriteLine($"До зустрічі, {_name}!");
@@ -166,7 +184,7 @@ namespace Rock_Scissors_Paper
         {
             Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine(GameAssets.RulesText);
-            Console.ReadKey();
+            Thread.Sleep(2000);
         }
 
         private static Weapons ChooseWeapon()
@@ -174,7 +192,7 @@ namespace Rock_Scissors_Paper
             Console.WriteLine("\nОберіть свою зброю!" +
                               $"\n{(int)Weapons.Paper}) Папір" +
                               $"\n{(int)Weapons.Rock}) Каміння" +
-                              $"\n{(int)Weapons.Scissors}) Ножиці\"");
+                              $"\n{(int)Weapons.Scissors}) Ножиці");
 
             if (int.TryParse(Console.ReadLine(), out int weapon))
                 if (Enum.IsDefined(typeof(Weapons), weapon))

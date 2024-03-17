@@ -1,4 +1,4 @@
-﻿namespace Rock_Scissors_Paper;
+﻿namespace Rock_Scissors_Paper.Enums;
 
 enum BattleState
 {
