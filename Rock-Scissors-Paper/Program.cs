@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Rock_Scissors_Paper.Enums;
+﻿using Rock_Scissors_Paper.Enums;
 
 namespace Rock_Scissors_Paper
 {
@@ -14,10 +13,8 @@ namespace Rock_Scissors_Paper
         public static void Main()
         {
             Console.ResetColor();
-            
-            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine(GameAssets.Logo);
             Console.WriteLine(GameAssets.WelcomeText);
-            Thread.Sleep(2000);
             
             _name = GetName();
             _age = GetAge();
@@ -28,22 +25,20 @@ namespace Rock_Scissors_Paper
 
         private static string GetName()
         {
-            Console.WriteLine(new string('-', Console.WindowWidth));
-            Console.Write("Ім'я: ");
+            Console.Write("Name: ");
             
             string? name = Console.ReadLine();
 
             if (!string.IsNullOrEmpty(name)) 
                 return name;
             
-            Console.WriteLine("\nТи маєш ввести своє ім'я для продовження :(");
+            Console.WriteLine("\nYou need to enter your name to continue :(");
             return GetName();
         }
         
         private static int GetAge()
         {
-            Console.WriteLine(new string('-', Console.WindowWidth));
-            Console.Write("Вік: ");
+            Console.Write("Age: ");
 
             if (int.TryParse(Console.ReadLine(), out int age))
             {
@@ -51,7 +46,7 @@ namespace Rock_Scissors_Paper
                 return age;
             }
             
-            Console.WriteLine("\nВік це числа!");
+            Console.WriteLine("\nAge is number!");
             return GetAge();
         }
 
@@ -61,22 +56,21 @@ namespace Rock_Scissors_Paper
 
             if (age >= restrictionAge) return;
 
-            Console.WriteLine($"Вибач, герою, але тобі має бути принаймі {restrictionAge} років!");
+            Console.WriteLine($"Sorry, hero, but you must be at least {restrictionAge} years old!");
             EndGame();
         }
         
         private static void ShowStatistics()
         {
-            Thread.Sleep(1000);
+            Console.ReadKey();
             Console.WriteLine("\u2552\u2550\u2550\u2550\u2550\u2550\u2550\u2555");
             
-            Console.WriteLine($"\u2570\u2508\u27a4 Ім'я: {_name}");
-            Console.WriteLine($"\u2570\u2508\u27a4 Вік: {_age}");
-            Console.WriteLine($"\u2570\u2508\u27a4 Кількість зіграних раундів: {_totalRounds}");
-            Console.WriteLine($"\u2570\u2508\u27a4 Кількість перемог: {_totalVictories}");
+            Console.WriteLine($"Name: {_name}");
+            Console.WriteLine($"Age: {_age}");
+            Console.WriteLine($"Total rounds played: {_totalRounds}");
+            Console.WriteLine($"Total victories: {_totalVictories}");
 
             Console.WriteLine("\u2558\u2550\u2550\u2550\u2550\u2550\u2550\u255b");
-            Thread.Sleep(1000);
         }
 
         private static void ChangeGameState()
@@ -94,20 +88,19 @@ namespace Rock_Scissors_Paper
 
         private static int AskForStart()
         {
-            Thread.Sleep(2000);
-            Console.WriteLine(new string('-', Console.WindowWidth));
-            
-            Console.WriteLine($"Готовий, герою, розпочати свій шлях і випробування, що чекають на тебе?" +
-                              $"\nТвоя відвага та винахідливість будуть ключем до твоєї перемоги! " +
-                              $"\n{(int)GameState.Start}) Готовий!!! " +
-                              $"\n{(int)GameState.End}) Краще я піду...");
-            
-            
+            Console.ReadKey();
+    
+            Console.WriteLine($"Are you ready, hero, to embark on your journey and face the trials ahead?" +
+                              $"\nYour courage and ingenuity will be the key to your victory! " +
+                              $"\n{(int)GameState.Start}) Ready!!! " +
+                              $"\n{(int)GameState.End}) I'd rather not...");
+    
+    
             if (int.TryParse(Console.ReadLine(), out int answer))
                 if (Enum.IsDefined(typeof(GameState), answer))
                     return answer;
-            
-            Console.WriteLine("\nОберіть один з варіантів!");
+    
+            Console.WriteLine("\nChoose one of the options!");
             return AskForStart();
         }
 
@@ -133,7 +126,7 @@ namespace Rock_Scissors_Paper
             Console.WriteLine(text);
             Console.ResetColor();
             Console.WriteLine(message);
-            Thread.Sleep(2000);
+            Console.ReadKey();
             ShowStatistics();
         }
 
@@ -169,36 +162,34 @@ namespace Rock_Scissors_Paper
 
         private static void ShowBattle(Weapons playerWeapon, Weapons enemyWeapon)
         {
-            Thread.Sleep(2000);
-            Console.WriteLine($"{GameAssets.PlayerWeapons[playerWeapon]}  \nVS  {GameAssets.AiWeapons[enemyWeapon]}");
+            Console.WriteLine($"{GameAssets.PlayerWeapons[playerWeapon]}  \n  {GameAssets.AiWeapons[enemyWeapon]}");
             Thread.Sleep(2000);
         }
 
         private static void EndGame()
         {
-            Console.WriteLine($"До зустрічі, {_name}!");
+            Console.WriteLine($"Goodbye, {_name}!");
             Environment.Exit(0);
         }
 
         private static void ShowGameRules()
         {
-            Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine(GameAssets.RulesText);
-            Thread.Sleep(2000);
+            Console.ReadKey();
         }
 
         private static Weapons ChooseWeapon()
         {
-            Console.WriteLine("\nОберіть свою зброю!" +
-                              $"\n{(int)Weapons.Paper}) Папір" +
-                              $"\n{(int)Weapons.Rock}) Каміння" +
-                              $"\n{(int)Weapons.Scissors}) Ножиці");
+            Console.WriteLine("\nChoose your weapon!" +
+                              $"\n{(int)Weapons.Paper}) Paper" +
+                              $"\n{(int)Weapons.Rock}) Rock" +
+                              $"\n{(int)Weapons.Scissors}) Scissors");
 
             if (int.TryParse(Console.ReadLine(), out int weapon))
                 if (Enum.IsDefined(typeof(Weapons), weapon))
                     return (Weapons)weapon;
             
-            Console.WriteLine("\nОберіть один з варіантів!");
+            Console.WriteLine("\nChoose one of the options!");
             return ChooseWeapon();
         }
         

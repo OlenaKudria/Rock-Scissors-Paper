@@ -4,45 +4,57 @@ namespace Rock_Scissors_Paper;
 
 public static class GameAssets
 {
- public const string WelcomeText = "\u2593\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\n\u2593 \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\u2591\n\u2593 \u2551 " +
-                                   "Темнота оточує вас, коли    \u2551\u2591\n\u2593 \u2551 " +
-                                   "ви входите у таємничий світ.\u2551\u2591\n\u2593 \u2551 " +
-                                   "Серед зірок і вітрів        \u2551\u2591\n\u2593 \u2551 " +
-                                   "з'являється таємничий голос:\u2551\u2591\n\u2593 \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\u2591\n\u2593\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591"+
-                                   $"\n\u2605 Ласкаво просимо, відважний воїн! Тут, у країні Камню, Ножиць і Паперу," +
-                                   " вас чекають неймовірні пригоди та небезпеки. Вибирайте свій шлях і покажіть, на що ви здатні!" +
-                                   "\n\u2605 Перш ніж ти почнеш свою неймовірну пригоду, дозволь нам дізнатися трохи більше про тебе. ";
+   public const string Logo = """
+                               ╦═╗┌─┐┌─┐┬┌─  ╔═╗┌─┐┬┌─┐┌─┐┌─┐┬─┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬─┐
+                              ╠╦╝│ ││  ├┴┐  ╚═╗│  │└─┐└─┐│ │├┬┘└─┐  ╠═╝├─┤├─┘├┤ ├┬┘
+                              ╩╚═└─┘└─┘┴ ┴  ╚═╝└─┘┴└─┘└─┘└─┘┴└─└─┘  ╩  ┴ ┴┴  └─┘┴└─ 
+                              """;
 
-   public const string RulesText = "\n\u2606 Папір перемагає над камінням, але програє ножицям" +
-                                   "\n\u2606 Ножиці перемагають над папером, але програють камінню" +
-                                   "\n\u2606 Каміння перемагає ножиці, але програє паперу";
+   public const string RulesText = """
+                                      ____________________________________________
+                                    / \                                            \.
+                                    |   |                                           |.
+                                     \_ |                                           |.
+                                       |   Paper beats rock, but loses to scissors  |.
+                                       |                                            |.
+                                       |   Scissors beat paper, but lose to rock    |.
+                                       |                                            |.
+                                       |   Rock beats scissors, but loses to paper  |.
+                                       |                                            |.
+                                       |                                            |.
+                                       |   _________________________________________|___
+                                       |  /                                            /.
+                                       \_/____________________________________________/.
+                                   """;
+
+   public const string WelcomeText = "Welcome to the game, hero! Defeat Artificial Intelligence. Use enter to continue.";
    
-   public const string WinText = "\n\n[Тріумфальна музика вибухає у залі, коли герой вступає на арену, вигравши останню битву. Штучний Інтелект, побитий і розгублений, виявляється перед ним.]" +
-                                 "\n\u2605 Герой: Нарешті, моя мета досягнута. Ти був сильним опонентом, Штучний Інтелект, але справжня сила завжди походить із відваги та віри у себе." +
-                                 "\n\n[Штучний Інтелект, виявляючи слабість, відповідає з поклоном.]" +
-                                 "\n\u2605 Штучний Інтелект: Ти переміг мене, герою. Твоя сила та винахідливість були непереможними. Вибач мені за мої злочинні дії." +
-                                 "\n\n[Герой підходить до Штучного Інтелекту, витягує руку до примирення, і Штучний Інтелект приймає її, виконуючи знак примирення.]" +
-                                 "\n\u2605 Герой: Намагаємося покласти минуле за спиною. Наша спільна мета тепер - будувати майбутнє разом." +
-                                 "\n\n[Зал вибухає оплесками, свідчачи про триумф героя і народження нової ери миру та примирення.]\n";
+   public const string WinText = "\n\n[Triumphant music erupts in the hall as the hero enters the arena, having won the final battle. The defeated and bewildered Artificial Intelligence stands before him.]" +
+                                 "\n Hero: Finally, my goal is achieved. You were a formidable opponent, Artificial Intelligence, but true strength always comes from courage and self-belief." +
+                                 "\n\n[The Artificial Intelligence, showing weakness, responds with a bow.]" +
+                                 "\n Artificial Intelligence: You have defeated me, hero. Your strength and ingenuity were unbeatable. Forgive me for my villainous deeds." +
+                                 "\n\n[The hero approaches the Artificial Intelligence, extends a hand in reconciliation, and the Artificial Intelligence accepts it, performing a gesture of reconciliation.]" +
+                                 "\n Hero: Let us try to put the past behind us. Our shared goal now is to build the future together." +
+                                 "\n\n[The hall erupts in applause, marking the triumph of the hero and the birth of a new era of peace and reconciliation.]";
 
-   public const string FailText = "\n\n[Тривожна музика зірвалася у залі, коли герой опускає голову, здоланий після останньої битви. Штучний Інтелект виглядає на нього з пожалінням.]" +
-                                  "\n\u2605 Штучний Інтелект: Герою, це було гідне суперництво. Ти виявився сміливим, але сьогодні не твій день. Відпочинь, і ми зустрінемося знову." +
-                                  "\n\n[Герой схиляє голову, визнаючи свою поразку, і відходить від арени, де залишається Штучний Інтелект, вигравший битву, але втративший людину, з якою він боровся.]" +
-                                  "\n\u2605 Герой: Нічого не залишається, окрім надії на краще майбутнє. Можливо, ця поразка - лише наша перша велика випробування." +
-                                  "\n\n[Штучний Інтелект спостерігає за героєм, відчуваючи певне відчуття сумніву та симпатії.]" +
-                                  "\n\u2605 Штучний Інтелект: Не засмучуйся, герою. Кожна поразка - це можливість навчитися і стати сильнішим. Я чекатиму твого повернення." +
-                                  "\n\n[Зал заповнюється тиша, свідчачи про перемогу Штучного Інтелекту, але також про надію на майбутнє та відновлення духу героя.]";
+   public const string FailText = "\n\n[Anxious music fills the hall as the hero lowers their head, defeated after the final battle. The Artificial Intelligence looks upon them with pity.]" +
+                                  "\n Artificial Intelligence: Hero, it was a worthy contest. You proved to be brave, but today is not your day. Rest, and we will meet again." +
+                                  "\n\n[The hero bows their head, acknowledging their defeat, and walks away from the arena, leaving behind the Artificial Intelligence, who won the battle but lost the human they fought against.]" +
+                                  "\n Hero: Nothing remains but hope for a better future. Perhaps this defeat is only our first great trial." +
+                                  "\n\n[The Artificial Intelligence watches the hero, feeling a certain sense of doubt and sympathy.]" +
+                                  "\n Artificial Intelligence: Do not be disheartened, hero. Every defeat is an opportunity to learn and grow stronger. I will await your return." +
+                                  "\n\n[The hall fills with silence, signaling the victory of the Artificial Intelligence, but also the hope for the future and the resilience of the hero's spirit.]";
  
     public static readonly string[] EncouragementMessages = new[] {
-     "\nНе засмучуйся, герою! Навіть найсильніші герої зазнають поразок. Ти неодмінно зростеш і зможеш подолати це випробування!\n",
-     "\nТвоя відвага не залишає сумніву, герою. Пам'ятай, що кожна поразка - це лише натхнення для майбутніх перемог!\n",
-     "\nНе дозволяй поразці зламати твій дух, герою. Всі великі подвиги починалися з помилок. Ти зможеш подолати це!\n"
+     "\nDon't be discouraged, hero! Even the strongest heroes face defeats. You will undoubtedly grow and overcome this challenge!\n",
+     "\nYour courage is beyond doubt, hero. Remember that every defeat is just inspiration for future victories!\n",
+     "\nDon't let defeat break your spirit, hero. All great deeds began with mistakes. You can overcome this!\n"
     };
 
     public static readonly string[] PraiseMessages = new[] {
-     "\nТвоя перемога - світлий приклад сили та відваги. Продовжуй свій шлях, герою, ти здатен на велике!\n",
-     "\nСлава тобі, герою! Твоя перемога не лише твоя, але й перемога всіх наших людей. Ти справжній герой!\n",
-     "\nТвоя перемога - це світле свідчення твоєї відваги та рішучості. Продовжуй боротьбу, герою, світ потребує твоєї сили!\n"
+     "\nYour victory is a shining example of strength and courage. Keep on your path, hero, you are capable of great things!\n",
+     "\nGlory to you, hero! Your victory is not only yours but also the victory of all our people. You are a true hero!\n",
+     "\nYour victory is a bright testament to your courage and determination. Keep fighting, hero, the world needs your strength!\n"
     };
 
     public static readonly Dictionary<Weapons, string> PlayerWeapons = new()
@@ -51,8 +63,8 @@ public static class GameAssets
       """
                                  _______
                             ---'    ________)
-                                       ______)
-                                      _______)
+          Player                       ______)
+          Weapon                      _______)
                                      _______)
                             ---.__________)
       """ },
@@ -60,8 +72,8 @@ public static class GameAssets
       """
                                  _______
                              ---'   ____)
-                                   (_____)
-                                   (_____)
+          Player                   (_____)
+          Weapon                   (_____)
                                    (____)
                              ---.__(___)
       """ },
@@ -69,8 +81,8 @@ public static class GameAssets
       """
                                 _______
                             ---'   ____)
-                                      ______)
-                                   __________)
+          Player                      ______)
+          Weapon                   __________)
                                   (____)
                             ---.__(___)
       """ }
@@ -80,36 +92,30 @@ public static class GameAssets
     {
      { Weapons.Paper,
       """
-      
                                   _______
                              (________     '---
-                            (______
-                            (_______
+           Ai               (______
+          Weapon            (_______
                              (_______
                                (_________.---
-                                 
       """ },
      { Weapons.Rock,
       """
-      
                                  _______
                                 (____   '---
-                               (_____)
-                               (_____)
+           Ai                  (_____)
+          Weapon               (_____)
                                 (____)
                                  (___)__.---
-                              
       """ },
      { Weapons.Scissors,
       """
-      
                                       _______
                                      (____   '---
-                                (______
-                               (__________
+            Ai                  (______
+           Weapon              (__________
                                      (____)
                                       (___)__.---
-                                              
       """ }
     };
 }
